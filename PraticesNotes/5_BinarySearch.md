@@ -21,3 +21,47 @@
             return self._getKth(A, B[pb:], k-pb)
 
 ```
+
+## 寻找上下边界
+对于一个有序数组，找某一值的上下边界。找不到返回-1。
+比如找下边界，核心是**找到最后一个大于等于key的位置**:
+``` python
+def low_bound(arr, key):
+    def p(v): return v >= key
+    low, high = 0, len(arr) - 1
+    res = -1
+    while low <= high:
+      mid = low + (high-low)/2
+      # mid = (low+high)/2 might overflow
+      if p(arr[mid]):
+      # we found a potential minimum x, but keep check smaller one
+        res = mid
+        high = mid - 1
+      else:
+        # predicate is false, go to right to find true val
+        low = mid + 1
+    res = res if arr[res] == key else -1
+    return res
+```
+判断每次mid的值是否大于等于key，是的话说明找到一个潜在的，先存着，继续往左找。
+注意，大于等于可能到循环结束找的都是大于的，所以需要在结尾加个判断。
+
+上边界同理，核心是**找到最后一个小于等于key的位置**：
+``` python
+
+def high_bound(arr, key):
+  def p(v): return v <= key
+  low, high = 0, len(arr) - 1
+  res = -1
+  while low <= high:
+      mid = low + (high-low)/2
+      if p(arr[mid]):
+      # we found a potential maximum x, but keep check bigger one
+        res = mid
+        low = mid + 1
+      else:
+        high = mid - 1
+  res = res if arr[res] == key else -1
+  return res
+
+```
