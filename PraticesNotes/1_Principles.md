@@ -77,6 +77,9 @@ for _ in xrange(len(lt)):
     do_work()
 ```
 
+### 表示最大值 2^32-1
+用0xffffffff表示最大值
+
 ## Profile and debug
 需要的profile的函数前加修饰器`@profile`，然后`kernprof -l -v Myscript.py`. 需要之前装`pip install line_profile`
 ### ipython
