@@ -11,5 +11,5 @@ arr = [[0 for x in xrange(N)] for y in xrange(M)]
 
 ## 矩阵转置
 ### MxN矩阵存在一个一维数组中，在空间复杂度不超过O(n)条件下in-place转置。
-### NxN矩阵clock wise 转置。
+### NxN矩阵clockwise 转置。
 **TODO**  http://www.geeksforgeeks.org/inplace-m-x-n-size-matrix-transpose/

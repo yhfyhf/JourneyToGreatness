@@ -65,3 +65,4 @@ def high_bound(arr, key):
   return res
 
 ```
+## 第一个不小于x， 第一个不大于x

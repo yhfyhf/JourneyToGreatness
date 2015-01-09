@@ -33,7 +33,7 @@ This is docstring
 Python中采取混合，mutable的是call by reference（比如dict，list），immutable的是call by value（比如int，string）。注意，比如list是个完整的Object，如果参数传的是list的一部分，就不是call by reference了，因为Object新建了。
 所以特别要注意的是，当函数中定义函数，内嵌函数的时候，不要用同一个mutable对象做参数！！！
 
-### private function
+### private function VS nested function (Closure)
 只是给别的函数提供帮助的私有函数，可以如下
 ``` python
 class Solution:
@@ -48,6 +48,10 @@ so = Solution()
 so.__private() # 报错
 so.public() # 1 2
 ```
+Nested function，类似闭包，在函数里定义函数，内部函数可以直接调用外部的变量而无需传参。
+缺点(暂时不明，有一次闭包RuntimeError了。但是自己测没问题，性能还更好)
+
+> python takes a performance penalty whenever it tries to access a "global" variable/function. If you can make that access local, you can shave off a little time.
 
 ### static variable in Class
 类似全局变量
