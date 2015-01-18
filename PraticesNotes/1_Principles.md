@@ -119,3 +119,26 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
     31  13368440     14016306      1.0      6.3                      board[e[0]][e[1]] = 'U'
 ```
 赋值和 for ... in ...是性能的坑，用 map(), reduce(), list comprehension 会快一点
+
+## [Code Style][cs]
++ 推荐使用嵌套/局部/内部类或函数
++ 在简单情况下推荐使用List Comprehension
+  + 每个部分单独置于一行，禁止多重for循环
++ 使用默认迭代器
++ 轻量级访问用properties（`self.valname`等）。对properties只读的函数
+头上加装饰器`@property`
++ 尽可能用隐式False。因为0, None, [], {}, "" 都是False，所以应该用
+`if foo`， `if not string`之类的，比较单件（如None），用 `is` 或`is not`，而不是`==`，`!=`
++ 命名
+  + 用单下划线(_)开头表示模块变量或函数是protected的(使用import * from时不会包含).
+  + 用双下划线(__)开头的实例变量或方法表示类内私有.
++ Main()，应该有独立的main函数，是的脚本是可以被导入的，如：
+``` python
+
+ def main():
+       ...
+ if __name__ == '__main__':
+       main()
+```
+
+[cs]: http://zh-google-styleguide.readthedocs.org/en/latest/google-python-styleguide/python_language_rules/
