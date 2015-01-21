@@ -2,7 +2,7 @@
 
 ## 先想好测试
 用`unittest`的TestCase
-
+unittest里可以先不assert，而是print ans
 ## 函数加注释
 ``` python
 def func(val1, val2):
@@ -66,6 +66,17 @@ Class Test:
 
 ### 短路表达式
 python 的短路表达式和C/C++差不多，`statement1 and statement2`，如果statement1 False了，2不合法也没事，因为跑不到。
+
+### 无穷大
+Python中，通过float强制类型转换来设置无穷大，无穷小
+``` python
+>>> float('NaN')
+nan
+>>> float('inf')
+inf
+>>> -float('inf')
+-inf
+```
 
 ### mutable object无法hash问题
 有时候我们要把list存在set里，会出现错误`TypeError: unhashable type: 'list'`。解决方法是把list转成 immutable的tuple， `tuple(mylist)`就ok了，需要转回来再`list(mytuple)`即可。
