@@ -1,0 +1,10 @@
+# Python
+*.py[cod]
+*.lprof
+
+# Emacs
+*~
+\#*\#
+
+# OSX
+.DS_Store
