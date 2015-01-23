@@ -77,6 +77,7 @@ inf
 >>> -float('inf')
 -inf
 ```
+或者0xffff表示2^32-1
 
 ### mutable object无法hash问题
 有时候我们要把list存在set里，会出现错误`TypeError: unhashable type: 'list'`。解决方法是把list转成 immutable的tuple， `tuple(mylist)`就ok了，需要转回来再`list(mytuple)`即可。
@@ -91,9 +92,6 @@ inf
 for _ in xrange(len(lt)):
     do_work()
 ```
-
-### 表示最大值 2^32-1
-用0xffffffff表示最大值
 
 ## Profile and debug
 需要的profile的函数前加修饰器`@profile`，然后`kernprof -l -v Myscript.py`. 需要之前装`pip install line_profile`
