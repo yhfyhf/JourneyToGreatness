@@ -6,6 +6,7 @@ def EmbededRetangle(lt):
     
     lt = [sorted(i) for i in lt ] # this lt has a new id
     length = len(lt)
+    # Build graph
     for i in range(length):
         for j in range(length):
             if lt[i][0] > lt[j][0] and lt[i][1] > lt[j][1]:
@@ -14,6 +15,7 @@ def EmbededRetangle(lt):
     res = 0
     
     def dp(i):
+        # Memoization
         if d[i]:
             return d[i]
         d[i] = 1

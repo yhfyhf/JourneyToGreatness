@@ -9,3 +9,7 @@
 + 位运算 Bithacks [Bit Twiddling Hacks](http://graphics.stanford.edu/~seander/bithacks.html)
 
 + Topcoder [Algorithm Tutorials](http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=alg_index)
+
++ Big O Cheatsheet[Big-O](http://bigocheatsheet.com/)
+
++ Hacking A Google Interview [MIT](http://courses.csail.mit.edu/iap/interview)

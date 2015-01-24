@@ -35,6 +35,7 @@ def rebuild2(preorder, inorder):
 #         pass
 
 
+
 def compareTree(root1, root2):
     # @param root1, the root Node of a tree
     # @param root2, the root Node of another tree
@@ -49,7 +50,7 @@ def compareTree(root1, root2):
     if str(root1.val) != str(root2.val):
         return False
     return compareTree(root1.left, root2.left) and \
-    compareTree(root1.right, root2.right)
+        compareTree(root1.right, root2.right)
         
         
 if __name__ == '__main__':

@@ -19,9 +19,6 @@ def lis(A):
         for j in xrange(i):
             if A[j] < A[i]:
                 dp[i] = max(dp[i], dp[j]+1)
-                print i, j
-                print "dp", dp
-                print "\n"
         res = max(res, dp[i])
         
     return res

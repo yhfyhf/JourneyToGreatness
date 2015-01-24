@@ -26,7 +26,7 @@ def preorder1(root):
         if p.left != None:
             stack.append(p.left)
 
-    
+
 def inorder(root):
     if root == None:
         return
@@ -46,7 +46,31 @@ def inorder1(root):
             print p.val
             p = p.right
 
-    
+def inorder2(root):
+    "Morris Traversal, O(1)"
+    cur = root
+    prev = Node()
+    while cur != None:
+        if cur.left == None:
+            print cur.val
+            prev = cur
+            cur = cur.right
+        else:
+            # find precursor
+            node = cur.left
+            while node.right != None and node.right != cur:
+                node = node.right
+
+            if node.right == None:  # build clue
+                node.right = cur
+                cur = cur.left
+            else: # already clued
+                print cur.val
+                node.right = None
+                prev = cur
+                cur = cur.right
+
+
 def postorder(root):
     if root == None:
         return
@@ -54,6 +78,14 @@ def postorder(root):
     postorder(root.right)
     print root.val
 
+def postorder_list(root):
+    if root:
+        for i in postorder_list(root.left):
+            yield i
+        for j in postorder_list(root.right):
+            yield j
+        yield root
+   
 def postorder1(root):
     stack = []
     p = root
@@ -61,7 +93,7 @@ def postorder1(root):
     while True:
         while p != None: # visit left
             stack.append(p)
-            p = p.left 
+            p = p.left
         q = None
         while len(stack) > 0:
             p = stack.pop()
@@ -77,7 +109,7 @@ def postorder1(root):
                 break
         if len(stack) == 0:
             break
-            
+
 def bfs(root):
     "same as preorder, except replace stack to queue"
     queue = deque()
@@ -96,29 +128,39 @@ def bfs(root):
 
 if __name__ == '__main__':
 
-    n1 = Node(1)
-    n3 = Node(3)
-    n2 = Node(2, n1, n3)
-    n7 = Node(7)
-    n6 = Node(6, left=n7)
-    n5 = Node(5, right=n6) # left = n6
-    root = Node(4, n2, n5)
+    # n1 = Node(1)
+    # n3 = Node(3)
+    # n2 = Node(2, n1, n3)
+    # n7 = Node(7)
+    # n6 = Node(6, left=n7)
+    # n5 = Node(5, right=n6) # left = n6
+    # root = Node(4, n2, n5)
+
+    n2 = Node(2, Node(4), Node(5))
+    n3 = Node(3, Node(6), Node(7))
+    root = Node(1, n2, n3)
+
     
+    #print [i.val for i in postorder_list(root)]
+    #print [i.val for i in postorder0(root)]
+
     # print "preorder:"
     # preorder(root)
     # print "preorder1:"
     # preorder1(root)
 
-    
+
     # print "inorder:"
     # inorder(root)
     # print "inorder1:"
     # inorder1(root)
-    
+    # print "inorder2:"
+    # inorder2(root)
     # print "postorder:"
     # postorder(root)
     # print "postorder1:"
     # postorder1(root)
-    print "bfs:"
-    bfs(root)
-    
+
+    # print "bfs:"
+    # bfs(root)
+
