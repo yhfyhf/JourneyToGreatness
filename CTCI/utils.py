@@ -1,3 +1,4 @@
+from random import randint
 class Node:
     def __init__(self, val):
         self.val = val
@@ -30,8 +31,10 @@ class LinkedList:
             return '[ ' + '->'.join(vals) + ' ]'
         return '[]'
 
-def randomLinkedList():
-    pass
+def randomLinkedList(low, high, num):
+    lt = [randint(low, high) for x in xrange(num)]
+    return array2LinkedList(lt)
+    
 
 def array2LinkedList(array):
     lt = LinkedList()
@@ -40,5 +43,4 @@ def array2LinkedList(array):
     return lt
 
 if __name__ == '__main__':
-    a = [1,2,3,4,5,6]
-    print array2LinkedList(a)
+    print randomLinkedList(0,100,10)

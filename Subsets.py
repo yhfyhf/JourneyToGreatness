@@ -43,5 +43,5 @@ class Solution:
         
 if __name__ == '__main__':
     so = Solution()
-    ll = [4,1,0]
+    ll = [1,2,2]
     print so.subsets3(ll)
