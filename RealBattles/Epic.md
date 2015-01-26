@@ -19,6 +19,11 @@ j] && i == j 则算作一个bull，如果wordA[i] == wordB[j] && i!=j 则算作�
 3. 用0-9数字生成一个长度为N的电话号码，(1) 号码不能用某三个数字 {a1, a2, a3}
 (2) 号码当中4只能出现在首位 （3）号码当中不能有任意两个连续的数字相同。求
 print出所有可能的号码。
-  +
+  + dfs + 剪枝
+
 3. 给一个0-9的手机键盘每个数字代表着某几个字母，比如1代表a,b,c; 2代表d, e, f
 等等。按键盘N次，求print所有可能生成的string。
+
+### http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=115252&extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26sortid%3D311
+
+### http://blog.csdn.net/lsdtc1225/article/details/39949367 （题比较全，答案不一定好）
