@@ -17,7 +17,8 @@ def BinarySearch(arr, key, l, r):
 
 
 def low_bound(arr, key):
-    def p(v): return v >= key
+    #def p(v): return v >= key
+    p = lambda v: v >= key
     low, high = 0, len(arr) - 1
     res = -1
     while low <= high:
@@ -37,7 +38,8 @@ def low_bound(arr, key):
 
 
 def high_bound(arr, key):
-    def p(v): return v <= key
+    #def p(v): return v <= key
+    p = lambda v: v <= key
     low, high = 0, len(arr) - 1
     res = -1
     while low <= high:
@@ -70,6 +72,6 @@ def high_bound(arr, key):
 if __name__ == '__main__':
     #unittest.main()
     ll = [1,2,4,4,4,4,5,6]
-    print low_bound(ll,3)
-    print high_bound(ll,3) 
+    print low_bound(ll,4)
+    print high_bound(ll,4) 
         
