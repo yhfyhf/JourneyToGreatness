@@ -67,6 +67,18 @@ Class Test:
 ### 短路表达式
 python 的短路表达式和C/C++差不多，`statement1 and statement2`，如果statement1 False了，2不合法也没事，因为跑不到。
 
+### for loop 修改
+比如一个2D list，这样修改是无效的：
+``` python 
+for line in res:
+    line = ''.join(line)
+```
+应该这样修改才行：
+``` python
+for i in xrange(len(res)):
+	res[i] = ''.join(res[i])
+```
+
 ### 无穷大
 Python中，通过float强制类型转换来设置无穷大，无穷小
 ``` python
