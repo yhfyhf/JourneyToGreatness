@@ -15,3 +15,7 @@
 + Hacking A Google Interview [MIT](http://courses.csail.mit.edu/iap/interview)
 
 + GeekForGeeks [Algorithms](http://www.geeksforgeeks.org/fundamentals-of-algorithms/)
+
++ MaskRay [MaskRay](https://github.com/MaskRay/LeetCode)
+
++ 图灵编程面试题 [Turing](http://www.ituring.com.cn/minibook/787)
