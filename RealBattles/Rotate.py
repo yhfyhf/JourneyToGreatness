@@ -4,6 +4,8 @@ def clockwise(mat):
         for j in xrange(i+1, n):
             mat[i][j], mat[j][i] = mat[j][i], mat[i][j]
     for l in mat:
+        print l
+    for l in mat:
         l.reverse()
     return mat
 
@@ -26,6 +28,7 @@ if __name__ == '__main__':
         [7,8,9]
     ]
 
-    clock = anticlockwise(mat)
+    clock = clockwise(mat)
+    print 
     for i in clock:
         print i
