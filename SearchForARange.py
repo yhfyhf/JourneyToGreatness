@@ -26,6 +26,38 @@ class Solution:
                 right = mid - 1
         high = high if A[high] == target else -1
         return [low, high]
+
+    def searchRange2(self, A, target):
+        def low(A, target):
+            p = lambda x: x >= target
+            l, r = 0, len(A) - 1
+            res = -1
+            while l <= r:
+                mid = l + (r - l) / 2
+                if p(A[mid]):
+                    res = mid
+                    r = mid - 1
+                else:
+                    l = mid + 1
+            res = res if A[res] == target else -1
+            return res
+            
+        def high(A, target):
+            p = lambda x: x <= target
+            l, r = 0, len(A) - 1
+            res = -1
+            while l <= r:
+                mid = l + (r - l) / 2
+                if p(A[mid]):
+                    res = mid
+                    l = mid + 1
+                else:
+                    r = mid - 1
+            res = res if A[res] == target else -1
+            return res
+        
+        return [low(A, target), high(A, target)]
+                
         
 
 if __name__ == '__main__':

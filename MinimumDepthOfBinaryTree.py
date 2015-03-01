@@ -26,7 +26,22 @@ class Solution:
             self.dfs(root.left, cnt+1)
         if root.right:
             self.dfs(root.right, cnt+1)
-        
+
+    def minDepth2(self, root):
+        # Time O(N), Space O(logN)
+        if not root:
+            return 0
+        res = float('inf')
+        queue = collections.deque([(root, 1)])
+        while queue:
+            node, dep = queue.popleft()
+            if not node.left and not node.right:
+                res = min(res, dep)
+            if node.left and res > dep:
+                queue.append((node.left, dep+1))
+            if node.right and res > dep:
+                queue.append((node.right, dep+1))
+        return res
 
 if __name__ == '__main__':
     root = TreeNode(1)

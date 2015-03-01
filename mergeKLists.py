@@ -15,6 +15,7 @@ class Solution:
     # @param a list of ListNode
     # @return a ListNode
     def mergeKLists(self, lists):
+        # Time O(N), Space O(N)
         if len(lists) == 0:
             return None
         if len(lists) == 1:

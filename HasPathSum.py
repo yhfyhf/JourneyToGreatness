@@ -48,6 +48,23 @@ class Solution:
         dfs(root, sum)
         return res
 
+    def hasPathSum3(self, root, sum):
+        # Time O(N) Space O(logN)
+        if not root:
+            return False
+        self.res = False
+        def dfs(root, sum):
+            if not root.left and not root.right:
+                if sum == root.val:
+                    self.res = True
+                return
+            if root.left:
+                dfs(root.left, sum - root.val)
+            if root.right:
+                dfs(root.right, sum - root.val)
+        dfs(root, sum)
+        return self.res
+
 
         
 

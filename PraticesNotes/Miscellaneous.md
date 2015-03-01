@@ -11,3 +11,7 @@ Cons: use too much space, hard to destroy
 [What is the advantage to using bloom filters?](http://stackoverflow.com/questions/4282375/what-is-the-advantage-to-using-bloom-filters)
 
 > You don't use a bloom filter to test if an element is present, you use it to test whether it's certainly not present, since it guarantees no false negatives.
+
+
+## 非入门算法
++ [用于二分图匹配的匈牙利算法](http://comzyh.com/blog/archives/148/)

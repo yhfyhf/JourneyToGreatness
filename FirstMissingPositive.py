@@ -21,7 +21,20 @@ class Solution:
             if A[i]!= i+1:
                 return i+1
         return n+1
-        
+
+    def firstMissingPositive2(self, A):
+        # Time O(N), Space O(N)
+        mx = 0
+        poset = set()
+        for i in A:
+            if i > 0:
+                mx = max(mx, i)
+                poset.add(i)
+        for i in xrange(1, mx):
+            if i not in poset:
+                return i
+        return mx+1
+    
 
 if __name__ == '__main__':
     S = [[-1], [2], [1,3,4], [-1,0,2,3,5]]

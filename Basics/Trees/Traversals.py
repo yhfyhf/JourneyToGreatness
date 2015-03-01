@@ -128,19 +128,16 @@ def bfs(root):
 
 if __name__ == '__main__':
 
-    # n1 = Node(1)
-    # n3 = Node(3)
-    # n2 = Node(2, n1, n3)
-    # n7 = Node(7)
-    # n6 = Node(6, left=n7)
-    # n5 = Node(5, right=n6) # left = n6
-    # root = Node(4, n2, n5)
-
-    n2 = Node(2, Node(4), Node(5))
-    n3 = Node(3, Node(6), Node(7))
-    root = Node(1, n2, n3)
-
+    n2 = Node(2, Node(1), Node(3))
+    n5 = Node(5, right=Node(6))
+    root= Node(4, n2, n5)
     
+    preorder(root)
+    print
+    inorder(root)
+    print
+    postorder(root)
+    print
     #print [i.val for i in postorder_list(root)]
     #print [i.val for i in postorder0(root)]
 
@@ -149,7 +146,7 @@ if __name__ == '__main__':
     # print "preorder1:"
     # preorder1(root)
 
-
+ 
     # print "inorder:"
     # inorder(root)
     # print "inorder1:"

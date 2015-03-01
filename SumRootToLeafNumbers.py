@@ -10,6 +10,7 @@ class Solution:
     # @return an integer
     res = 0
     def sumNumbers(self, root):
+        # Time O(n) Space O(logN)
         if root == None:
             return 0
         def dfs(root, buf):
