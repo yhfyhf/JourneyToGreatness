@@ -6,8 +6,9 @@ class Solution:
         """
         @dp: how many palindromes in the string
         """
-        dp = [len(s)-i for i in xrange(len(s)+1)]
+        dp = [0 for i in xrange(len(s)+1)]
         p = [[False for i in range(len(s))] for j in range(len(s))]
+        # initialize to worst case
         for i in range(len(s)+1):
             dp[i] = len(s) - i
 

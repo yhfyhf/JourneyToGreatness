@@ -15,6 +15,21 @@ class Solution:
                 dp[i][j] = (dp[i-1][j] and s1[i-1] == s3[i+j-1]) or (dp[i][j-1] and s2[j-1] == s3[i+j-1])
             
         return dp[len(s1)][len(s2)]
+    
+    def isInterleave2(self, s1, s2, s3):
+        m, n = len(s1), len(s2)
+        if m + n != len(s3):
+            return False
+        dp = [[False for x in range(n+1)] for y in range(m+1)]
+        dp[0][0] = True
+        for i in range(m+1):
+            for j in range(n+1):
+                if dp[i][j]:
+                    if i < m and s3[i+j] == s1[i]:
+                        dp[i+1][j] = True
+                    if j < n and s3[i+j] == s2[j]:
+                        dp[i][j+1] = True
+        return dp[m][n]
                 
 
   

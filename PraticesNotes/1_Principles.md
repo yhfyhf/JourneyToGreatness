@@ -114,6 +114,8 @@ for _ in xrange(len(lt)):
 >>> so = myscript.Solution()
 >>> timeit so.solve(XXX)
 ```
+### decorator work only when call the function
+So, if we pass function as parameter, it's without decorator version
 
 
 

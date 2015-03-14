@@ -11,6 +11,7 @@ class Solution:
             return True
         
         def dfs(dep, buf):
+            print dep, board
             if len(buf) == n:
                 res.append(buf)
                 return
@@ -25,7 +26,7 @@ class Solution:
 
 if __name__ == '__main__':
     so = Solution()
-    res = so.solveNQueens(9)
+    res = so.solveNQueens(7)
     for b in res:
         for l in b:
             print l
