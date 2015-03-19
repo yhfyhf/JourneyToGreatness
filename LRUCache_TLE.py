@@ -1,45 +1,37 @@
 import collections
 
 class LRUCache:
+
     # @param capacity, an integer
-    # TODO better performance, now 1406 ms
     def __init__(self, capacity):
-        self._hmap = dict()
-        self._cache = collections.deque()
         self.CAPACITY = capacity
-        
+        self._cache = collections.deque()
+        self._map = dict()
 
     # @return an integer
     def get(self, key):
-        if key in self._hmap:
-            self._cache.remove((key, self._hmap[key]))
-            self._cache.appendleft((key, self._hmap[key]))
-
-            print 'get:', self._hmap, self._cache
-
-            return self._hmap[key]
+        if key in self._map:
+            v = self._map[key]
+            self._cache.remove((key, v))
+            self._cache.appendleft((key, v))
+            return v
         else:
-            print 'get:', self._hmap, self._cache
-
             return -1
-
+            
     # @param key, an integer
     # @param value, an integer
     # @return nothing
     def set(self, key, value):
-        if key not in self._hmap:
+        if key in self._map:
+            self._cache.remove((key, self._map[key]))
             self._cache.appendleft((key, value))
-            self._hmap[key] = value
-            if len(self._cache) > self.CAPACITY:
-                tmp = self._cache.pop()
-                self._hmap.pop(tmp[0])
+            self._map[key] = value
         else:
-            self._cache.remove((key, self._hmap[key]))
             self._cache.appendleft((key, value))
-            self._hmap[key] = value
-
-        print 'set:', self._hmap, self._cache
-
+            self._map[key] = value
+            if len(self._cache) > self.CAPACITY:
+                kv = self._cache.pop()
+                self._map.pop(kv[0])
 if __name__ == '__main__':
     lru = LRUCache(1)
     #Testcase 1
