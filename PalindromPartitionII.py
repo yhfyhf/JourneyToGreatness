@@ -22,4 +22,5 @@ class Solution:
 if __name__ == '__main__':
     so = Solution()
     print so.minCut("cabababcbc")
-    print so.minCut1("cabababcbc")
+    print so.minCut("ccaacabacb")
+

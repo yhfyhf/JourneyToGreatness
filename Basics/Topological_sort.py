@@ -4,7 +4,7 @@ Topological Sort
 Given a set of partil order, get the possible total orders
 
 Solution:
-1. select the nodes have no precursor (in degree as 0) and output them
+1. select the vertexes have no precursor (in degree as 0) and output them
 2. delete the vetex and the edge end with this vetex
 3. repeat 1 and 2 until graph is empty
 

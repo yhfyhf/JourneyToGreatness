@@ -23,6 +23,8 @@ This is docstring
 
 编写函数的时候，先写函数名，注释，和pass，防止编译器报错
 
+注意！！操作数据的顺序尤为重要，如果要修改的数据可能为右值（修改其他数据），再三检查操作的顺序！！
+
 ### 分析复杂度
 在代码注释中说明时间复杂度，空间复杂度
 
@@ -76,7 +78,7 @@ for line in res:
 应该这样修改才行：
 ``` python
 for i in xrange(len(res)):
-	res[i] = ''.join(res[i])
+    res[i] = ''.join(res[i])
 ```
 
 ### 无穷大
