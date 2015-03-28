@@ -20,16 +20,12 @@ public:
 		vector<vector<int> > ans;
 		int len = num.size();
 		if (len <= 2)
-			return ans;
-		
-		sort(num.begin(), num.end());
- 
+			return ans;		
+		sort(num.begin(), num.end()); 
 		for(int k = 0; k < len - 2; k++) {
-
 			// Start from negative number
 			if (num[k] > 0)
-				break;
-			
+				break;			
 			int l = k+1, r = len - 1;
 			while (l < r) {
 				// if first two num's sum > 0
@@ -44,18 +40,45 @@ public:
 				else {
 					int cur[] = {num[k], num[l], num[r]};
 					ans.push_back(vector<int>(cur, cur+3));
-					l++, r--;
-					
+					l++, r--;					
 					// pruning, skip duplicated l, r in postion[1], [2]
 					while(l<r && num[l] == num[l-1]) l++;
 					while(l<r && num[r] == num[r+1]) r--;
 				}
-			}
-			
+			}			
 			// pruning, skip duplicated k in  postion[0]
 			while(k < len && num[k] == num[k+1]) k++;
 		}
 		return ans;
+    }
+
+    // More elegant version
+    vector<vector<int> > threeSum(vector<int> &num) {
+        int n = num.size();
+		vector<vector<int> > res;
+		sort(num.begin(), num.end());
+		if (n < 3)
+		    return res;
+		for(int i = 0; i < n; ) {
+		    int j = i + 1, k = n - 1, s = -num[i], old;
+		    while (j < k) {
+		        if (num[j] + num[k] < s)
+		            j++;
+		        else if (num[j] + num[k] > s)
+		            k--;
+		        else {
+		            res.push_back(vector<int>{num[i], num[j], num[k]});
+		            old = num[j];
+			    // remove duplicate j
+		            while (++j < k && num[j] == old);
+		            k--;
+		        }
+		    }
+		    // remove duplicated i
+		    old = num[i];
+		    while (++i < k && num[i] == old);
+		}
+	    return res;
     }
 };
 

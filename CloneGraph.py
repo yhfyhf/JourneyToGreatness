@@ -82,4 +82,29 @@ class Solution:
                     # from directed graph to undirected graph
                     graph[curr].neighbors.append(graph[nb])
         return new_node
-                
+    def cloneGraph(self, node):
+        '''
+        bfs to visit each node
+        a dict, key as original node, val as copyied graph
+        a queue, store visit sequence 
+        '''
+        if not node:
+            return None
+        mirror = {}
+        queue = collections.deque()
+        queue.append(node)
+        new_node = UndirectedGraphNode(node.label)
+        while queue:
+            curr = queue.popleft()
+            for nb in curr.neighbors:
+                if nb not in mirror:
+                    nb_copy = UndirectedGraphNode(nb.label)
+                    mirror[nb] = nb_copy
+                    mirror[curr].neighbors.append(nb_copy)
+                    queue.append(nb)
+                else:
+                    mirror[curr].neighbors.append(mirror[nb])
+        return new_node
+
+if __name__ == '__main__':
+    

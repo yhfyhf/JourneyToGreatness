@@ -30,7 +30,7 @@ class TopologicalSort():
             if i[1] in vertex_copy:
                 vertex_copy.remove(i[1])
                 
-        # 如果有环，在某一步计算indgree0的时候，所有的变都会消掉。
+        # 如果有环，在某一步计算indgree0的时候，所有的边都会消掉。
         if len(vertex_copy) == 0:
             return -1
 

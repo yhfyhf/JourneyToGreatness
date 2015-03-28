@@ -60,14 +60,38 @@ public:
 	}
 	return res;
     }
+    // More accurate
+    double sqrt4(int x) {
+	double eps = 0.001;
+	if (x == 1 || x == 0)
+	    return x;
+	double l = 0, r = x, res = 0;
+	while (l <= r) {
+	    double mid = l + (r - l) / 2;
+	    if ( mid >= x / mid && mid <= x / mid + eps) {
+		return mid;
+	    } else if ( mid > x / mid) {
+		r = mid - eps;
+	    } else {
+		l = mid + eps;
+		res = mid; // get the lower bound of sqrt
+	    }
+	}
+	return res;
+    }
+
+    
 };
 
 int main(int argc, char *argv[])
 {
     int a[] = {0, 1, 2, 3, 100000, -4};
     Solution so;
-    for (auto i: a) {
-	cout<<so.sqrt(i)<<" "<<so.sqrt2(i)<<" "<<so.sqrt3(i)<<endl;
-    }
+    // for (auto i: a) {
+    // 	cout<<so.sqrt(i)<<" "<<so.sqrt2(i)<<" "<<so.sqrt3(i)<<" "<<so.sqrt4(i)<<endl;
+    // }
+
+    for (auto i: a)
+	cout<<so.sqrt4(i)<<endl;
     return 0;
 }
