@@ -19,6 +19,7 @@ public:
         s.resize(idx);
         
         // reverse
+	// why this ? because iterator cannot 相加想减
         int start = 0;
         for (int i = start+1; i < s.size(); i++) {
             if (s[i] == ' ') {
@@ -27,13 +28,15 @@ public:
             }
         }
         reverse(s.begin() + start, s.end());
-        reverse(s.begin(), s.end());
-        
+        reverse(s.begin(), s.end());        
     }
 };
 
 int main(int argc, char *argv[])
 {
-
+    Solution so;
+    string s = "a";
+    so.reverseWords1(s);
+    cout<<s<<endl;
     return 0;
 }

@@ -40,51 +40,80 @@ void print_list(ListNode *head) {
     cout<<endl;
 }
 
+// class Solution {
+// public:
+//     ListNode *reverseKGroup(ListNode *head, int k) {
+//         ListNode **p = &head;
+//         while (1) {
+//             // return value, this is important
+//             (*p) = reverse((*p), k);
+//             for (int i = 0; i < k; i++){
+//                 if(!(*p))
+//                     return head;
+//                 p = &(*p)->next;
+//             }
+//         }
+//     }
+
+//     ListNode *reverse(ListNode *head, int k) {
+//         /*
+//             reverse from head to kth node
+//             return the first node
+//         */
+//         ListNode **p = &head, *curr = head;
+//         // test whether its length is smaller than k
+//         for (int i = 0; i < k; i++) {
+//             if (!curr)
+//                 return head;
+//             curr = curr->next;
+//         }
+//         curr = head;
+//         ListNode *tmp, *end = head;
+//         for (int i = 0; i < k; i++) {
+//             tmp = curr;
+//             curr = curr->next;
+//             tmp->next = (*p);
+//             (*p) = tmp;
+//         }
+//         end->next = curr;
+//         return (*p);
+//     }
+
+// };
+
 class Solution {
 public:
     ListNode *reverseKGroup(ListNode *head, int k) {
-        ListNode **p = &head;
+        ListNode *p = head, *start = head;
         while (1) {
-            // return value, this is important
-            (*p) = reverse((*p), k);
-            for (int i = 0; i < k; i++){
-                if(!(*p))
+            // count k nodes, if not, finsihed
+            for (int i =  0; i < k; i++) {
+                if (p)
+                    p = p->next;
+                else
                     return head;
-                p = &(*p)->next;
             }
+            reverse(start, k);
+            start = p;
         }
+        // useless, only to pleasure the compiler
+        return head;
     }
-
-    ListNode *reverse(ListNode *head, int k) {
-        /*
-            reverse from head to kth node
-            return the first node
-        */
-        ListNode **p = &head, *curr = head;
-        // test whether its length is smaller than k
+    void reverse(ListNode *head, int k) {
+        ListNode *succ = head, *end = head, *now = head, *prev = head;
         for (int i = 0; i < k; i++) {
-            if (!curr)
-                return head;
-            curr = curr->next;
+            now = succ;
+            succ = succ->next;
+            now->next = prev;
+            prev = now;
         }
-        curr = head;
-        ListNode *tmp, *end = head;
-        for (int i = 0; i < k; i++) {
-            tmp = curr;
-            curr = curr->next;
-            tmp->next = (*p);
-            (*p) = tmp;
-        }
-        end->next = curr;
-        return (*p);
+        end->next = succ;
     }
-
 };
-
-
 
 int main(int argc, char *argv[])
 {
+    // 1->2->3->4->5
     ListNode *p = new ListNode(1);
     p->next = new ListNode(2);
     p->next->next = new ListNode(3);
@@ -93,7 +122,8 @@ int main(int argc, char *argv[])
     p->next->next->next->next->next = nullptr;
     Solution s;
 
-    ListNode *k = s.reverseKGroup(p, 2);
-    print_list(k);
+    ListNode *head = p;
+    s.reverse(p, 3);
+    cout<<(head->val)>>endl;
     return 0;
 }

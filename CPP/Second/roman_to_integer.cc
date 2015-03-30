@@ -25,7 +25,7 @@ public:
     int romanToInt(string s) {
         int res = 0;
         for (int i = 0; i < s.size(); i++) {
-            if (i > 0 && map(s[i]) > 2 * map(s[i-1]))
+            if (i > 0 && map(s[i]) >  map(s[i-1]))
                 res += map(s[i]) - 2 * map(s[i-1]);
             else
                res += map(s[i]);

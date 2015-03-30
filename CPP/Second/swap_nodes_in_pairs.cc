@@ -21,9 +21,9 @@ using namespace std;
 class Solution {
 public:
     ListNode *swapPairs(ListNode *head) {
-        ListNode **p = &head, *tmp;
+        ListNode **p = &head;
         while ((*p) && (*p)->next) {
-            tmp = (*p);
+            ListNode *tmp = (*p);
             (*p) = (*p)->next;
             tmp->next = (*p)->next;
             (*p)->next = tmp;
