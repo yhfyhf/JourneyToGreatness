@@ -36,6 +36,13 @@ public:
         }
     }
     // -----------------------------------------------------------
+    /*
+      first ("abc", 0),
+      after the first loop, divided in 3 branches ("abc", 1), ("bac", 1) and ("cba", 1)
+      and each branches divided into  2 branches, the res become to ("abc", 2), ("acb", 2)
+      ("bac", 2), ("bca", 2), ("cba", 2) and ("cab", 2)
+
+     */
     vector<vector<int> > permute2(vector<int> &num) {
         vector<vector<int> > res;
         perm(num, 0, res);

@@ -19,4 +19,5 @@ class Solution:
 
 if __name__ == '__main__':
     so = Solution()
-    print so.permuteUnique([-1,-1,3,-1])
+    ss = "aaab"
+    print so.permuteUnique(list(ss))

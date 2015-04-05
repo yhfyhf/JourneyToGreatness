@@ -15,7 +15,24 @@ using namespace std;
 class Solution {
 public:
     int largestRectangleArea(vector<int> &height) {
-        
+        stack<int> s;
+        int maxval = 0, topval = 0;
+        int i = 0;
+        while(i < height.size()) {
+            if (s.empty() || height[i] > height[s.top()])
+                s.push(i++);
+            else {
+                int curr = s.top();
+                s.pop();
+                maxval = max(maxval, height[curr] * (s.empty() ? i : i - s.top() - 1));
+            }
+        }
+        while (!s.empty()) {
+            int curr = s.top();
+            s.pop();
+            maxval = max(maxval, height[curr] * (s.empty() ? i : i - s.top() - 1));  
+        }
+        return maxval;
     }
 };
 

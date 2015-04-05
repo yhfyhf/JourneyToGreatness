@@ -37,6 +37,9 @@ def inorder(root):
 def inorder1(root):
     stack = []
     p = root
+    # why or here, the first elememt, and the time
+    # the whole left tree poped out, stack is empty
+    # but p has something
     while len(stack) > 0 or p != None:
         if p != None:
             stack.append(p)
@@ -46,6 +49,11 @@ def inorder1(root):
             print p.val
             p = p.right
 
+
+
+            
+
+    
 def inorder2(root):
     "Morris Traversal, O(1)"
     cur = root
@@ -131,12 +139,10 @@ if __name__ == '__main__':
     n2 = Node(2, Node(1), Node(3))
     n5 = Node(5, right=Node(6))
     root= Node(4, n2, n5)
-    
-    preorder(root)
-    print
+
     inorder(root)
     print
-    postorder(root)
+    inorder3(root)
     print
     #print [i.val for i in postorder_list(root)]
     #print [i.val for i in postorder0(root)]
