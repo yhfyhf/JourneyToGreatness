@@ -31,7 +31,8 @@ def low_bound(arr, key):
         else:
             # predicate is false, go to right to find true val
             low = mid + 1
-    res = res if arr[res] == key else -1
+    res = res if res != -1 else -1
+
     return res 
 
 
@@ -71,7 +72,7 @@ def high_bound(arr, key):
         
 if __name__ == '__main__':
     #unittest.main()
-    ll = [1,2,4,4,4,4,5,6]
-    print low_bound(ll,4)
+    ll = [100,200,400,500,600]
+    print low_bound(ll,420)
     print high_bound(ll,4) 
         

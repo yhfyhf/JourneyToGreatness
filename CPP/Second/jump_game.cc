@@ -15,7 +15,7 @@ using namespace std;
 class Solution {
 public:
     bool canJump(int A[], int n) {
-	/* dp[i] remaining steps from 0 to i*/
+	/* dp[i] remaining steps since from 0 to i*/
         if (n == 0) return false;
         int dp[n];
         dp[0] = A[0];

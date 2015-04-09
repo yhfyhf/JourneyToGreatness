@@ -16,7 +16,7 @@ class Solution:
             res.reverse()
             return res
         v1, v2 = getVersion(version1), getVersion(version2)
-
+        #print v1, v2
         while v1 and v2:
             t1, t2= v1.pop(), v2.pop()
             if t1 > t2:

@@ -5,12 +5,12 @@ class Solution:
     def findMedianSortedArrays(self, A, B):
         lenA = len(A); lenB = len(B)
         if (lenA + lenB) % 2 == 1:
-            return self._getKth(A, B, (lenA + lenB)/2 + 1)
+            return self.__getKth(A, B, (lenA + lenB)/2 + 1)
         else:
-            return  ( self._getKth(A, B, (lenA + lenB)/2) +
-                self._getKth(A, B, (lenA + lenB)/2 + 1) ) / 2.0
+            return  ( self.__getKth(A, B, (lenA + lenB)/2) +
+                self.__getKth(A, B, (lenA + lenB)/2 + 1) ) / 2.0
 
-    def _getKth(self, A, B, k):
+    def __getKth(self, A, B, k):
         lenA, lenB = len(A), len(B)
         # ensure A is the shorter one
         if lenA > lenB:
@@ -22,12 +22,14 @@ class Solution:
         if k == 1:
             return min(A[0], B[0])
 
-        pa = min(k/2, lenA)
-        pb = k - pa
-        if A[pa-1] <= B[pb-1]:
-            return self._getKth(A[pa:], B, k-pa)
+        ath = min(k/2, lenA)
+        bth = k - ath
+        # depend on ath element of A (A[ath-1]) and bth element of B
+        # (B[bth-1]), we can get remove either ath or bth element
+        if A[ath-1] <= B[bth-1]:
+            return self.__getKth(A[ath:], B, k-ath)
         else:
-            return self._getKth(A, B[pb:], k-pb)
+            return self.__getKth(A, B[bth:], k-bth)
 
 
 
@@ -36,8 +38,9 @@ class Solution:
         
 if __name__ == '__main__':
     so = Solution()
-    #print so.findMedianSortedArrays([1,2,5,6],[3,3])
-    A = [1,3,5,7]
+    # print so.findMedianSortedArrays([1,2,5,6],[3,3])
+    A = [1,3,5,7,11]
     B = [2,4,6,8,9,10]
-    print so.findMedianSortedArrays(B,A)
+    #print so.__getKth(A, B, 1)
+    print so.findMedianSortedArrays(A, B)
    

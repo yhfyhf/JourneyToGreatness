@@ -27,3 +27,7 @@
 + [Leetcode Article 很清楚](http://articles.leetcode.com/)
 
 + [Hawstein cracking-the-coding-interview](https://github.com/Hawstein/cracking-the-coding-interview)
+
++ [Everything you need to kick ass on your coding interview](https://github.com/andreis/interview)
+
++ [tech::interview (@GREAT)](http://www.fgdsb.com/)

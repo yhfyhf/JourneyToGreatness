@@ -26,7 +26,7 @@ int minDistance(int dist[], bool sptSet[])
 // A utility function to print the constructed distance array
 void printSolution(int dist[], int n)
 {
-   printf("Vertex   Distance from Source\n");
+   printf("Vertex Distance from Source\n");
    for (int i = 0; i < V; i++)
       printf("%d \t\t %d\n", i, dist[i]);
 }
@@ -53,6 +53,8 @@ void dijkstra(int graph[V][V], int src)
      {
        // Pick the minimum distance vertex from the set of vertices not
        // yet processed. u is always equal to src in first iteration.
+
+       // explore the touchable vertex
        int u = minDistance(dist, sptSet);
  
        // Mark the picked vertex as processed
@@ -66,6 +68,7 @@ void dijkstra(int graph[V][V], int src)
          // smaller than current value of dist[v]
 	 /* dist[u] != INT_MAX && dist[u] + graph[u][v] < dist[v]  是个妥协， 因为INT_MAX加就溢出了，
 	  所以可以开始设为0xffff*/
+	  // relax technique to update the distance between our nodes and reachable nodes
          if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX 
                                        && dist[u]+graph[u][v] < dist[v])
             dist[v] = dist[u] + graph[u][v];
