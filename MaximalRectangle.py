@@ -34,6 +34,7 @@ class Solution:
     
     def maximalRectangle3(self, matrix):
         """
+        https://leetcode.com/discuss/20240/share-my-dp-solution
         left(i, j) to enumerate the left edge
         left(i, j) = max(left(i-1, j) curleft)
 
@@ -93,7 +94,7 @@ if __name__ == '__main__':
         '01110',
         '11001',
         '11110',
-        '11010'
+        '11110'
     ]
     so = Solution()
     #print so.maximalRectangle(mat)

@@ -1,11 +1,17 @@
 from collections import deque
 
+
+
 class Node:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
+"""
+   Both recursion and iteration are O(N) in time/space complexity 
+   
+"""
 def preorder(root):
     if root == None:
         return
@@ -134,16 +140,31 @@ def bfs(root):
         if p.right != None:
             queue.append(p.right)
 
+
+def ir(root):
+    if not root:
+        return None
+    stack = []
+    p = root
+    while stack or p:
+        if p:
+            stack.append(p)
+            p = p.left
+        else:
+            p = stack.pop()
+            print p.val
+            p = p.right
+        
+        
+            
 if __name__ == '__main__':
 
     n2 = Node(2, Node(1), Node(3))
-    n5 = Node(5, right=Node(6))
-    root= Node(4, n2, n5)
+    n6 = Node(6, Node(5), Node(7))
+    root= Node(4, n2, n6) 
 
-    inorder(root)
-    print
-    inorder3(root)
-    print
+    #inorder(root)
+    ir(root)
     #print [i.val for i in postorder_list(root)]
     #print [i.val for i in postorder0(root)]
 

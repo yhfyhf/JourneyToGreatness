@@ -31,3 +31,5 @@
 + [Everything you need to kick ass on your coding interview](https://github.com/andreis/interview)
 
 + [tech::interview (@GREAT)](http://www.fgdsb.com/)
+
++ [包子Training](http://baozitraining.org/blog)

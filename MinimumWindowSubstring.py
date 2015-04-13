@@ -47,6 +47,40 @@ class Solution:
         else:
             return res
 
+    # @return a string
+    def minWindow1(self, S, T):
+        res = ""
+        if len(T) == 0:
+            return res
+        require, have = {}, {}
+        for c in T:
+            try:
+                require[c] += 1
+            except KeyError:
+                require[c] = 1
+        for c in T:
+            have[c] = 0
+        cnt, res = 0, " " * (len(S) + 1)
+        start, end = 0, 0
+        
+        for end in range(len(S)):
+            c = S[end]
+            if c in require:
+                if have[c] < require[c]:
+                    cnt += 1
+                have[c] += 1
+            if cnt == len(T):
+                while (S[start] not in require) or (have[S[start]] > require[S[start]]):
+                    if S[start] in require:
+                        have[S[start]] -= 1
+                    start += 1
+                if len(res) > end - start + 1:
+                    res = S[start:end + 1]
+                have[S[start]] -= 1
+                cnt -= 1
+                start += 1
+        return res if len(res) != len(S)+1 else ""
+
 if __name__ == '__main__':
     so = Solution()
     S = "ADOBECODEFREQOFPHSAPFHDPFWBFSPAFBFASPDFSDSAFDSFSBCOQEPFHBXCJVHUERCPQIADABSASADASFGSASDFSDFADSCCVCVZDTEFGBERAFDFBANC"
