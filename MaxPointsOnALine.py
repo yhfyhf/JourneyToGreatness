@@ -33,6 +33,29 @@ class Solution:
             res = max(res, max(slope.values()) + samePoints)
         return res
 
+
+    def maxPoints2(self, points):
+        n = len(points)
+        if n < 3:
+            return n
+        res = -float('inf')
+        for i in xrange(n):
+            slopes = {'inf': 0}
+            samePoints = 1
+            for j in xrange(i+1, n):
+                if points[i].x == points[j].x and points[i].y == points[j].y:
+                    samePoints += 1
+                elif points[i].x == points[j].x:
+                    slopes['inf'] += 1
+                else:
+                    k = float(points[j].y - points[i].y) / (points[j].x - points[i].x)
+                    try:
+                        slopes[k] += 1
+                    except KeyError:
+                        slopes[k] = 1
+            res = max(res, max(slopes.values()) + samePoints)
+        return res
+            
 class Test(unittest.TestCase):
 
     def test(self):

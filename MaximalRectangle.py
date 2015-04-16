@@ -65,7 +65,9 @@ class Solution:
                 if matrix[i][j] == '1':
                     left[j] = max(left[j], cur_left)
                 else:
-                    left[j] = 0
+                    # initial to 0, for next row usage, not mean current left is 0
+                    # because we know for sure this cell's height is 0
+                    left[j] = 0 
                     cur_left = j + 1
 
             for j in xrange(n-1, -1, -1):

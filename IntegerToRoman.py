@@ -11,6 +11,7 @@ class Solution:
                 num -= INT[i]
         return ans
 
+    
 
 if __name__ == '__main__':
     so = Solution()

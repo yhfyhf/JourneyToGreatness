@@ -38,6 +38,25 @@ class Solution:
 
         return res.next
 
+    # @param a list of ListNode
+    # @return a ListNode
+    # heap version
+    def mergeKLists2(self, lists):
+        new_head = ListNode(-1)
+        p = new_head
+        heap = []
+        for node in lists:
+            if node:
+                heap.append((node.val, node))
+        heapq.heapify(heap)
+        while heap:
+            _, curr = heapq.heappop(heap)
+            p.next = curr
+            p = p.next
+            if curr.next:
+                heapq.heappush(heap, (curr.next.val, curr.next))
+        return new_head.next
+
 if __name__ == '__main__':
     so = Solution()
     lists = [{}]

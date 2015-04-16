@@ -139,21 +139,6 @@ def bfs(root):
             queue.append(p.left)
         if p.right != None:
             queue.append(p.right)
-
-
-def ir(root):
-    if not root:
-        return None
-    stack = []
-    p = root
-    while stack or p:
-        if p:
-            stack.append(p)
-            p = p.left
-        else:
-            p = stack.pop()
-            print p.val
-            p = p.right
         
         
             

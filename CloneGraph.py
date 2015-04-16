@@ -55,7 +55,7 @@ class Solution:
         if not node:
             return None
         return dfs(node, {})
-        
+
 
     def cloneGraph2(self, node):
         '''
@@ -82,7 +82,8 @@ class Solution:
                     # from directed graph to undirected graph
                     graph[curr].neighbors.append(graph[nb])
         return new_node
-    def cloneGraph(self, node):
+    
+    def cloneGraph3(self, node):
         '''
         bfs to visit each node
         a dict, key as original node, val as copyied graph
@@ -106,5 +107,27 @@ class Solution:
                     mirror[curr].neighbors.append(mirror[nb])
         return new_node
 
+
+    def cloneGraph4(self, node):
+        '''
+        dfs to visit each node
+        a dict, key as original node, val as copyied graph
+        a queue, store visit sequence 
+        '''
+        if not node:
+            return None
+        mirror = {}
+        def dfs(node, mirror):
+            if node in mirror:
+                return mirror[node]
+            copy = UndirectedGraphNode(node.label)
+            mirror[node] = copy
+            for neighbor in node.neighbors:
+                copy.neighbors.append(dfs(neighbor, mirror))
+            return copy
+                
+        dfs(node, mirror)
+        return mirror[node]
+         
 if __name__ == '__main__':
     

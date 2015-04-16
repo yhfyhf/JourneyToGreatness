@@ -37,6 +37,15 @@ class Solution:
             max_area = max(max_area, top_area)        
         return max_area
 
+    # raw O(n^2) method
+    def largestRectangleArea(self, height):
+        res = 0
+        for left in range(len(height)):
+            cur_height = height[left]
+            for right in range(left+1, len(height)):
+                cur_height = min(cur_height, height[right])
+                res = max(res, (right - left + 1)* cur_height)
+        return res
 
 if __name__ == '__main__':
     so = Solution()

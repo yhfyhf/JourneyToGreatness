@@ -33,3 +33,5 @@
 + [tech::interview (@GREAT)](http://www.fgdsb.com/)
 
 + [包子Training](http://baozitraining.org/blog)
+
++ [Leetcode SQL 和 Shell 部分网友答案](https://github.com/tiankonguse/leetcode-solutions)

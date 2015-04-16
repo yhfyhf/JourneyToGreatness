@@ -32,8 +32,32 @@ class Solution:
             return self.__getKth(A, B[bth:], k-bth)
 
 
-
-        
+    def getKth(A, B, k):
+        # @param A, B: list A and B
+        # @param k: kth element, based on 1~k
+        print 'k:', k, '\nA:', A, '\nB:', B, '\n'
+        lenA, lenB = len(A), len(B)
+        # make sure A is shorter one
+        if lenA > lenB:
+            getKth(B, A, k)
+        if lenA == 0:
+            return B[k-1]
+        if k == 1:
+            return min(A[0], B[0])
+     
+        ath = min(k / 2, lenA)
+        bth = k - ath
+     
+        # if A[ath - 1] <= B[bth-1]:
+        #     return getKth(A[ath:], B, k - ath)
+        # else:
+        #     return getKth(A, B[bth:], k - bth)
+        if A[ath - 1] < B[bth - 1]:
+            return getKth(A[ath:], B, k - ath)
+        elif A[ath - 1] > B[bth - 1]:
+            return getKth(A, B[bth:], k - bth)
+        else:
+            return A[ath - 1] # or B[bth - 1]
 
         
 if __name__ == '__main__':
