@@ -10,14 +10,14 @@ class Solution:
                 return True
             if A[l] < A[mid]:
                 if A[l] <= target and target < A[mid]:
-                    r = mid
+                    r = mid - 1
                 else:
                     l = mid + 1
             elif A[l] > A[mid]:
                 if A[mid] < target and target <= A[r]:
                     l = mid + 1
                 else:
-                    r = mid
+                    r = mid - 1
             else:
                 l += 1
         return False

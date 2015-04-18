@@ -140,16 +140,22 @@ def bfs(root):
         if p.right != None:
             queue.append(p.right)
         
-        
+def print_kth_layer(root, k):
+    if not root:
+        return None
+    if k == 1:
+        print root.val
+    print_kth_layer(root.left, k-1)
+    print_kth_layer(root.right, k-1)
             
 if __name__ == '__main__':
 
     n2 = Node(2, Node(1), Node(3))
     n6 = Node(6, Node(5), Node(7))
     root= Node(4, n2, n6) 
-
+    print_kth_layer(root, 3)
     #inorder(root)
-    ir(root)
+
     #print [i.val for i in postorder_list(root)]
     #print [i.val for i in postorder0(root)]
 

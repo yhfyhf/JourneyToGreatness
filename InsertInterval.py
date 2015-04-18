@@ -10,6 +10,7 @@ class Solution:
     # @param intervals, a list of Intervals
     # @param newInterval, a Interval
     # @return a list of Interval
+    # Terrible, should not sort !
     def insert(self, intervals, newInterval):
         res = []
         st, end = newInterval.start, newInterval.end
@@ -28,6 +29,29 @@ class Solution:
                         
         res.append(Interval(st,end))
         res.sort(key=lambda i:i.start)
+        return res
+
+    # https://leetcode.com/discuss/20961/o-n-python-solution
+    def insert2(self, intervals, newInterval):
+        start = newInterval.start
+        end = newInterval.end
+        res = []
+        i = 0
+        while i < len(intervals):
+            # overlapped or can be insert before it (keep update untile break)
+            if start <= intervals[i].end:
+                # not overlap in sert
+                if end < intervals[i].start:
+                    break
+                # Overlapped part, maybe many time
+                start = min(start, intervals[i].start)
+                end = max(end, intervals[i].end)
+            # before meet newIntervals, just add 
+            else:
+                res.append(intervals[i])
+            i += 1
+        res.append(Interval(start, end))
+        res += intervals[i:]
         return res
 
 if __name__ == '__main__':
