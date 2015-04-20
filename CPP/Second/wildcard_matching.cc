@@ -22,6 +22,7 @@ using namespace std;
 
 class Solution {
 public:
+    // http://www.cnblogs.com/zuoyuan/p/3781872.html
     bool isMatch(const char *s, const char *p) {
         // 常量指针， 指向常量的指针
         const char *star = NULL, *ss = s;

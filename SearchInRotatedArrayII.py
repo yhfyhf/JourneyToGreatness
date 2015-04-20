@@ -18,7 +18,7 @@ class Solution:
                     l = mid + 1
                 else:
                     r = mid - 1
-            else:
+            else: # A[l] == A[mid]
                 l += 1
         return False
 
