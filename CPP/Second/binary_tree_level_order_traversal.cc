@@ -43,8 +43,42 @@ using namespace std;
 
 class Solution {
 public:
-    vector<vector<int> > levelOrder(TreeNode *root) {
-        
+    vector<vector<int> > levelOrder(TreeNode *p) {
+        vector<vector<int> > res;
+	if (!p)
+	    return res;
+	vector<TreeNode *> cur;
+	cur.push_back(p);
+	while (!cur.empty()) {
+	    vector<int> tmp;
+	    for(auto e: cur)
+		    tmp.push_back(e->val);
+	    res.push_back(tmp);
+	    vector<TreeNode *> next;
+	    for (auto e: cur) {
+		if (e->left)
+		    next.push_back(e->left);
+		if (e->right)
+		    next.push_back(e->right);
+	    }
+	    cur = next;
+	}
+	return res;
+    }
+
+    vector<vector<int> > levelOrder2(TreeNode *p) {
+	vector<vector<int> > res;
+	traverse(root, 0, res);
+	return res
+    }
+    void traverse(TreeNode *root, size_t level, vector<vector<int> > &res) {
+	if (! root)
+	    return;
+	if (level > res.size() - 1)
+	    res.push_back(vector<int>);
+	res[level].push_back(root->val); // res.back().push_back(root->val);
+	traverse(root->left, level + 1, res);
+	traverse(root->right, level + 1, res);	
     }
 };
 
