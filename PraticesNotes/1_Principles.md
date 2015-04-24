@@ -3,6 +3,7 @@
 ## 先想好测试
 用`unittest`的TestCase
 unittest里可以先不assert，而是print ans
+test类中的测试函数都必须以 test 开头。
 ## 函数加注释
 ``` python
 def func(val1, val2):
