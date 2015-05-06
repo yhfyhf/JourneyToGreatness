@@ -2,7 +2,7 @@
 
 ## 先想好测试
 用`unittest`的TestCase
-unittest里可以先不assert，而是print ans
+unittest里可以先不assert，而是print ans  
 test类中的测试函数都必须以 test 开头。
 ## 函数加注释
 ``` python
@@ -31,6 +31,13 @@ This is docstring
 
 ### 添加attr
 给某一object设置attr。`node.visited = True`, then `hasattr(node, 'visited') == True`.
+
+### Dict to Set
+``` python
+dic = {‘a’:1, ‘b’:2, ‘c’:3}
+st = set(dic)
+```
+则 st 中变成 含 dic 所有 key 的 set([‘a’, ‘b’, ‘c’])
 
 ### Call by value and call by reference
 Python中采取混合，mutable的是call by reference（比如dict，list），immutable的是call by value（比如int，string）。注意，比如list是个完整的Object，如果参数传的是list的一部分，就不是call by reference了，因为Object新建了。
@@ -113,9 +120,9 @@ for _ in xrange(len(lt)):
 ### ipython
 用ipython debug和测函数运行时间就蛮好。在文件所在目录下运行ipython，
 ``` python
->>> import myscript
->>> so = myscript.Solution()
->>> timeit so.solve(XXX)
+>>> import myscript  
+>>> so = myscript.Solution()  
+>>> timeit so.solve(XXX)  
 ```
 ### decorator work only when call the function
 So, if we pass function as parameter, it's without decorator version

@@ -1,7 +1,5 @@
 from collections import deque
 
-
-
 class Node:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -55,10 +53,7 @@ def inorder1(root):
             print p.val
             p = p.right
 
-
-
-            
-
+    
     
 def inorder2(root):
     "Morris Traversal, O(1)"
@@ -153,8 +148,8 @@ if __name__ == '__main__':
     n2 = Node(2, Node(1), Node(3))
     n6 = Node(6, Node(5), Node(7))
     root= Node(4, n2, n6) 
-    print_kth_layer(root, 3)
-    #inorder(root)
+    #print_kth_layer(root, 3)
+    inorder(root)
 
     #print [i.val for i in postorder_list(root)]
     #print [i.val for i in postorder0(root)]

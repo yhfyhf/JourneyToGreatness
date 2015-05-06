@@ -10,8 +10,21 @@ def checkIntersect(r1, r2):
     
 
 def countIntersect(lt):
-    pass
+    # O(N^2)
+    r_set = set()
+    for r1 in range(len(lt)):
+        for r2 in range(r1+1, len(lt)):
+            if checkIntersect(lt[r1], lt[r2]):
+                if lt[r1] not in r_set:
+                    r_set.add(lt[r1])
+                if lt[r2] not in r_set:
+                    r_set.add(lt[r2])
 
+    return len(r_set)
+
+#lt = [(1,3,1,2), (2,5,1,4), (1,3,5,6), (4,6,3,6), (1, 3, 5, 6), (2.5, 5.5, 5.5, 3.5)]
+#lt2 = [(1,2,1,2)]
+#print countIntersect(lt2)
 
 """
 #1. make_trie
@@ -31,6 +44,47 @@ def make_trie(words):
         r[END] = {}
     return root
 
+
+def search0(dic, m):
+    # TODO mark visited
+    if len(m) < 1:
+        return
+    t = make_trie(dic)
+    res = set()
+    def dfs(i, j, tree, buff):
+        if i < 0 or i >= len(m) or j < 0 or j >= len(m[0]):
+            return
+        if END in tree:
+            if buff not in res:
+                res.add(buff)
+        if m[i][j] not in tree:
+            return
+        child = tree[m[i][j]]
+        for x in [-1, 0, 1]:
+            for y in [-1, 0, 1]:
+                if x != 0 or y != 0:
+                    dfs(i+x, j+y, child, buff + m[i][j])
+                    
+    for i in range(len(m)):
+        for j in range(len(m[0])):
+            dfs(i, j, t, '')
+    dfs(0, 0, t, '')
+    return res
+
+def test_search0():
+    m = [
+        list("aakm"),
+        list("qisb"),
+        list("rdrn"),
+        list("belb")
+    ]
+
+    dic = ["aaa", "air", "airbed", "aaa", "nbl", "mai"]
+    print search0(dic, m)
+    
+test_search0()
+
+    
 def search(dic, m):
     t = make_trie(dic)
     res = []
@@ -150,8 +204,8 @@ def max_reservation(lt):
 
 
 
-print max_reservation([4,9,6])
-print max_reservation([4,10,3,1,5])
+#print max_reservation([4,9,6])
+#print max_reservation([4,10,3,1,5])
 
 # if __name__ == '__main__':
 #     unittest.main()
