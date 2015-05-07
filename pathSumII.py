@@ -20,7 +20,7 @@ class Solution:
                     buf.append(root.val)
                     res.append(buf)
                     return 
-                addPath(root.left, sum-root.val, buf+[root.val])
-                addPath(root.right, sum-root.val, buf+[root.val])
-            addPath(root, sum, [])
-            return res
+            addPath(root.left, sum-root.val, buf+[root.val])
+            addPath(root.right, sum-root.val, buf+[root.val])
+        addPath(root, sum, [])
+        return res
