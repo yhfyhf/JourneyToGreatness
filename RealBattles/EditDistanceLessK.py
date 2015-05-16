@@ -32,11 +32,16 @@ def check_fuzzy_v4(trie, word, path = '', tol = 1):
     return ps
 
 
+def main():
+    origin = "For you know only a heap of broken images"
+    modified = "Far your knn onlie a deep of borken iimaes"
 
+    words_list = [line.strip() for line in open('words.txt', 'r')]
+    tree = make_trie(words_list)
+    for w in modified.split():
+        print check_fuzzy_v4(tree, w, tol=2)
+        
+    
 if __name__ == '__main__':
-    words = ['hello', 'hela', 'dokm', 'i', 'ke', 'ik']
-    t = make_trie(words)
-    #print t                     
-    #print check_fuzzy_v3(t, 'ello','', tol=2)
-    print check_fuzzy_v4(t, '','', tol=2)
+    main()
 
