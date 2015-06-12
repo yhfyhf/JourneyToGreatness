@@ -16,7 +16,6 @@ class Solution:
                 cur = A[i]
                 A[i] = A[cur-1]
                 A[cur-1] = cur
-
         for i in xrange(n):
             if A[i]!= i+1:
                 return i+1
@@ -37,7 +36,7 @@ class Solution:
     
 
 if __name__ == '__main__':
-    S = [[-1], [2], [1,3,4], [-1,0,2,3,5]]
+    S = [[-1], [2], [1,3,4], [2,0,-4,1,5]]
 
     so = Solution()
     for k in S:
