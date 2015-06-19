@@ -29,7 +29,7 @@ class TopologicalSort():
         for i in self.edges:
             if i[1] in vertex_copy:
                 vertex_copy.remove(i[1])
-                
+
         # 如果有环，在某一步计算indgree0的时候，所有的边都会消掉。
         if len(vertex_copy) == 0:
             return -1
@@ -63,21 +63,11 @@ class TopologicalSort():
         return res
 
 
-def test():
-    # illustration graph https://s3.amazonaws.com/Blog_Notes_CDN/E490C7D23AD30CEDF8F0CD4131F4F801.png
-    v=['a','b','c','d','e','f']
-    e=[('f', 'd'), ('a','b'),('a','d'),('b','c'),('d','c'),('d','e'),('e','c')]
-    # circle detection case
-    # v=['a','b','c','d','e', 'f']
-    # e=[('f', 'd'), ('a','b'),('a','d'),('b','c'),('d','c'),('d','e'),('e','c'), ('c', 'd')]
-    t = TopologicalSort(v, e)
-    print t.topoSort()
-
 
 def topo2(v, e):
     stack = []
     visited = set()
-    
+
     def dfs(node):
         if node not in visited:
             visited.add(node)
@@ -90,14 +80,17 @@ def topo2(v, e):
     for node in v:
         dfs(node)
     while stack:
-        print stack.pop()    
-        
+        print stack.pop()
+
 def test2():
-    v=['a','b','c','d','e','f']
-    e=[('k', 'f'), ('k', 'a'), ('f', 'd'), ('a','b'),('a','d'),('b','c'),('d','c'),('d','e'),('e','c')]
+    v=['a', 'b', 'c', 'd', 'e', 'f', 'k']
+    e=[('k', 'f'), ('k', 'a'), ('f', 'd'), ('a','b'),('a','d'),('b','c'),('d','c'),('d','e')]
+
+    t = TopologicalSort(v, e)
+    print t.topoSort()
+    print '=================================='
     topo2(v, e)
-    
+
 if __name__ == '__main__':
-    test()
+    print 'test2',
     test2()
-    
