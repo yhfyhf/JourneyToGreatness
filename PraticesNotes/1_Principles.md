@@ -11,6 +11,8 @@ def func(val1, val2):
     # @param val2: list, blabla....
     # @return res: boolean, blabla
 ```
+
+or [Google's style](https://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments)
 #### Comment VS Docstring
 在编程过程中，如果直接表述思想,用三个单引号的comment，如果是doc说明，用三个双引号。
 ```python
@@ -79,7 +81,7 @@ python 的短路表达式和C/C++差不多，`statement1 and statement2`，如�
 
 ### for loop 修改
 比如一个2D list，这样修改是无效的：
-``` python 
+``` python
 for line in res:
     line = ''.join(line)
 ```

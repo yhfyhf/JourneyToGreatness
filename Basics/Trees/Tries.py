@@ -15,7 +15,7 @@ class Trie(object):
         for c in word:
             if c not in node.children:
                 node.children[c] = Node()
-            # else, go down
+            # go deeper
             node = node.children[c]
 
 
@@ -32,10 +32,10 @@ class Trie(object):
                 return False, None
             node = node.children[c]
         return True, node.word
-    
 
 
-    
+
+
 if __name__ == '__main__':
     t = Trie()
     words = ['abc', 'ad', 'b', 'bc', 'c', 'cat']
@@ -43,5 +43,3 @@ if __name__ == '__main__':
         t.insert(w)
     print t.search('cat')
     print t.search('ca')
-        
-        
