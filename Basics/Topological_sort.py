@@ -79,18 +79,20 @@ def topo2(v, e):
 
     for node in v:
         dfs(node)
-    while stack:
-        print stack.pop()
+    #while stack:
+    #    print stack.pop()
+    print stack
 
 def test2():
-    v=['a', 'b', 'c', 'd', 'e', 'f', 'k']
-    e=[('k', 'f'), ('k', 'a'), ('f', 'd'), ('a','b'),('a','d'),('b','c'),('d','c'),('d','e')]
+    v1=['a', 'b', 'c', 'd', 'e', 'f', 'k']
+    e1=[('k', 'f'), ('k', 'a'), ('f', 'd'), ('a','b'),('a','d'),('b','c'),('d','c'),('d','e')]
 
-    t = TopologicalSort(v, e)
+    t = TopologicalSort(v1, e1)
     print t.topoSort()
     print '=================================='
-    topo2(v, e)
+    v2=['a', 'b', 'c', 'd', 'e', 'f', 'k']
+    e2=[('k', 'f'), ('k', 'a'), ('f', 'd'), ('a','b'),('a','d'),('b','c'),('d','c'),('d','e'), ('d', 'f')]
+    topo2(v2, e2)
 
 if __name__ == '__main__':
-    print 'test2',
     test2()
